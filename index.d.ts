@@ -1,5 +1,7 @@
-import * as mongooseLocal from 'mongoose';
-import { ObjectID } from 'mongodb';
+import * as mongooseLocal from 'mongoose'
+import { ObjectID } from 'mongodb'
+import * as express from "express"
+
 
 /**
  * Describe a Keystone Model.
@@ -143,6 +145,7 @@ export interface KeystoneDocumentedOptions {
 	compress: boolean
 	logger: string
 	"logger options": object
+	"logging middleware" : express.RequestHandler
 	"trust proxy": boolean
 	ssl: boolean | string
 	"ssl key": string
