@@ -12,6 +12,7 @@ module.exports = function SigninRoute (req, res) {
 		csrf: { header: {} },
 		logo: keystone.get('signin logo'),
 		redirect: keystone.get('signin redirect'),
+		poweredBy : keystone.get("powered by"),
 		user: req.user ? {
 			id: req.user.id,
 			name: UserList.getDocumentName(req.user) || '(no name)',

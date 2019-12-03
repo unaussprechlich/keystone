@@ -1,11 +1,13 @@
 {
-  "name": "keystone",
+  "name": "@unaussprechlich/keystone",
   "version": "4.2.1",
   "description": "Web Application Framework and Admin GUI / Content Management System built on Express.js and Mongoose",
   "main": "index.js",
+  "private": false,
+  "types": "./index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/keystonejs/keystone.git"
+    "url": "https://github.com/unaussprechlich/keystone.git"
   },
   "dependencies": {
     "@babel/core": "^7.4.4",
@@ -133,7 +135,9 @@
     "supertest": "^3.4.2",
     "uglify-js": "^3.5.13",
     "updtr": "^3.1.0",
-    "watch": "^1.0.2"
+    "watch": "^1.0.2",
+    "pug": "^2.0.3",
+    "@types/express": "^4.17.0"
   },
   "browserify": {
     "transform": [
@@ -147,8 +151,7 @@
     "underscore": "global:_"
   },
   "browserslist": "> 1%",
-  "author": "Jed Watson",
-  "homepage": "http://keystonejs.com/",
+  "author": "Jed Watson, unaussprechlich",
   "license": "MIT",
   "keywords": [
     "express",
@@ -164,9 +167,8 @@
     "forms"
   ],
   "readmeFilename": "README.md",
-  "gitHead": "ef3fd612285315ea8e12f68da4c8d6031e2c7fe7",
   "bugs": {
-    "url": "https://github.com/keystonejs/keystone/issues"
+    "url": "https://github.com/unaussprechlich/keystone/issues"
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production node build.js | uglifyjs -mc -b beautify=false,semicolons=true > ./admin/public/js/packages.js",
