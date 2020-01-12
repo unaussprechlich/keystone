@@ -68,8 +68,8 @@ module.exports = function createStaticRouter (keystone) {
 
 	/* Prepare LESS options */
 	var elementalPath = path.join(path.dirname(require.resolve('elemental')), '..');
-	var reactSelectPath = path.join(path.dirname(require.resolve('react-select')), '..');
-	var keystoneTinymcePath = path.dirname(require.resolve('keystone-tinymce'));
+	var reactSelectPath = path.join(path.dirname(require.resolve('react-select')), '/less/select.less');
+	var keystoneTinymcePath = path.join(path.dirname(require.resolve('keystone-tinymce')), "/skin/skin.less");
 	var customStylesPath = keystone.getPath('adminui custom styles') || '';
 
 	var lessOptions = {
@@ -77,8 +77,8 @@ module.exports = function createStaticRouter (keystone) {
 			javascriptEnabled: true,
 			modifyVars: {
 				elementalPath: JSON.stringify(elementalPath),
-				reactSelectPath: JSON.stringify(reactSelectPath),
-				keystoneTinymcePath: JSON.stringify(keystoneTinymcePath),
+				reactSelectPath: reactSelectPath,
+				keystoneTinymcePath: keystoneTinymcePath,
 				customStylesPath: JSON.stringify(customStylesPath),
 				adminPath: JSON.stringify(keystone.get('admin path')),
 			},
