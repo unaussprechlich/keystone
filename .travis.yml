@@ -59,9 +59,7 @@ script:
 sudo: required
 notifications:
   email:
-  - jed@keystonejs.com
-  slack:
-    secure: AqayzYjoHTlwE85pgB0h5yqpyBDWbdrpiXKXhb8tSqWPKi6unhkfZ4r11kQRowoDQXb+fue9367u+lJ9lKBfMv+SSFnKY+OccasfrW6JwJ8Wi258aB7bjcSP9kUtUfvbbvPSwQjY6Z8+9TlMxP6kyabeZ69SGnhnaJNt+vbAJzc=
+  - github@unaussprechlich.net
 services:
 - mongodb
 git:
@@ -76,5 +74,3 @@ addons:
     - mongodb-3.2-precise
     packages:
     - mongodb-org-server
-  jwt:
-    secure: EDmMTTPbjAwagS9jR5G9yMa7cyO3gdNuQGQ53NEcBKbM7CfUq+mtlyF1XGaLo8n9VseRgtw2RbxqztUgER3irlWpQu82t6DIJylYJpGy2oiAFimN2xp94p3HGatuCF4BMkRVBUvbtvmfFpZf4HKT5nup1MGvKVrUyZuQPObm9rQ=
