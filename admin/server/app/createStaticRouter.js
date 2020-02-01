@@ -72,6 +72,8 @@ module.exports = function createStaticRouter (keystone) {
 	var keystoneTinymcePath = path.join(path.dirname(require.resolve('keystone-tinymce')), "/skin/skin.less");
 	var customStylesPath = keystone.getPath('adminui custom styles') || '';
 
+	console.log("keystoneTinymcePath", keystoneTinymcePath);
+
 	var lessOptions = {
 		render: {
 			javascriptEnabled: true,
