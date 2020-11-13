@@ -238,7 +238,7 @@ export interface IList extends mongooseLocal.Document {
 	plural: string;
 
 	// https://github.com/keystonejs/keystone/blob/master/lib/list/add.js
-	add(obj: Object, prefix?: string, ...args: any[]): void;
+	add(...obj: Object[]): void;
 
 	add(prefix?: string, ...args: any[]): void;
 
