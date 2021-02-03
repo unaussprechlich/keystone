@@ -60,8 +60,13 @@ module.exports = function IndexRoute (req, res) {
 		? '/' + keystone.get('codemirror url path')
 		: '/' + keystone.get('admin path') + '/js/lib/codemirror';
 
+	if(!keystone.get("tinymceUrl")){
+		console.error("[TINYMCE] Please provide a valid tinymce url. keystone.set('tinymceUrl', 'https://cdn.tiny.cloud/1/MY_KEY/tinymce/5/tinymce.min.js')")
+	}
+
 	var locals = {
 		adminPath: keystoneData.adminPath,
+		tinymceUrl : keystone.get("tinymceUrl") || "https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js",
 		cloudinaryScript: false,
 		codemirrorPath: codemirrorPath,
 		env: keystone.get('env'),

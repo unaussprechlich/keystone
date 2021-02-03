@@ -178,19 +178,6 @@ export interface KeystoneDocumentedOptions {
 	"signout redirect": string
 
 	//https://keystonejs.com/documentation/configuration/admin-ui-options
-	"wysiwyg images": boolean
-	"wysiwyg cloudinary images": boolean
-	"wysiwyg additional buttons": string
-	"wysiwyg additional plugins": string
-	"wysiwyg additional options": {
-		toolbar: string
-		menubar: boolean
-		plugins: string[]
-	}
-	"wysiwyg override toolbar": boolean
-	"wysiwyg menubar": string
-	"wysiwyg importcss": string[]
-	"wysiwyg skin": string
 	nav: {
 		[key: string]: string | string[] | {
 			label: string,
@@ -220,6 +207,7 @@ export interface KeystoneOptions extends KeystoneDocumentedOptions, KeystoneCust
 		website: URL
 		name: string
 	}
+	"tinymceUrl" : string
 	"wysiwyg s3 images": boolean
 }
 

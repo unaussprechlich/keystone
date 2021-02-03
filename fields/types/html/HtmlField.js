@@ -16,13 +16,13 @@ function getId () {
 }
 
 // Workaround for #2834 found here https://github.com/tinymce/tinymce/issues/794#issuecomment-203701329
-function removeTinyMCEInstance (editor) {
+/*function removeTinyMCEInstance (editor) {
 	var oldLength = tinymce.editors.length;
 	tinymce.remove(editor);
 	if (oldLength === tinymce.editors.length) {
 		tinymce.editors.remove(editor);
 	}
-}
+}*/
 
 module.exports = Field.create({
 
@@ -39,40 +39,48 @@ module.exports = Field.create({
 		};
 	},
 
-	initWysiwyg () {
+	async initWysiwyg () {
 		if (!this.props.wysiwyg) return;
 
-		var self = this;
-		var opts = this.getOptions();
-
-		opts.setup = function (editor) {
-			self.editor = editor;
-			editor.on('change', self.valueChanged);
-			editor.on('focus', self.focusChanged.bind(self, true));
-			editor.on('blur', self.focusChanged.bind(self, false));
-		};
+		let self = this;
+		let opts = {
+			selector: '#' + this.state.id,
+			contextmenu: false,
+			menubar: false,
+			branding: false,
+			toolbar: "undo redo | styleselect | bold italic | link code | removeformat",
+			plugins: ['code', 'au,tolink', "link"],
+			link_default_protocol: 'https',
+			setup: function (editor) {
+				self.editor = editor;
+				editor.on('change', self.valueChanged);
+				editor.on('focus', self.focusChanged.bind(self, true));
+				editor.on('blur', self.focusChanged.bind(self, false));
+			}
+		}//this.getOptions();
 
 		this._currentValue = this.props.value;
-		tinymce.init(opts);
+		const result = await tinymce.init(opts)
+		console.debug("[TINYMCE]", result)
 		if (evalDependsOn(this.props.dependsOn, this.props.values)) {
 			this.setState({ wysiwygActive: true });
 		}
 	},
 
 	removeWysiwyg (state) {
-		removeTinyMCEInstance(tinymce.get(state.id));
+		//removeTinyMCEInstance(tinymce.get(state.id));
 		this.setState({ wysiwygActive: false });
 	},
 
 	componentDidUpdate (prevProps, prevState) {
 		if (prevState.isCollapsed && !this.state.isCollapsed) {
-			this.initWysiwyg();
+			this.initWysiwyg().then();
 		}
 
 		if (this.props.wysiwyg) {
 			if (evalDependsOn(this.props.dependsOn, this.props.values)) {
 				if (!this.state.wysiwygActive) {
-					this.initWysiwyg();
+					this.initWysiwyg().then();
 				}
 			} else if (this.state.wysiwygActive) {
 				this.removeWysiwyg(prevState);
@@ -81,7 +89,7 @@ module.exports = Field.create({
 	},
 
 	componentDidMount () {
-		this.initWysiwyg();
+		this.initWysiwyg().then();
 	},
 
 	componentWillReceiveProps (nextProps) {

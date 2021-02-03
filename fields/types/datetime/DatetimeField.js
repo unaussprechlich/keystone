@@ -21,12 +21,12 @@ module.exports = Field.create({
 	focusTargetRef: 'dateInput',
 
 	// default input formats
-	dateInputFormat: 'YYYY-MM-DD',
-	timeInputFormat: 'h:mm:ss a',
+	dateInputFormat: 'DD.MM.YYYY',
+	timeInputFormat: 'HH:mm',
 	tzOffsetInputFormat: 'Z',
 
 	// parse formats (duplicated from lib/fieldTypes/datetime.js)
-	parseFormats: ['YYYY-MM-DD', 'YYYY-MM-DD h:m:s a', 'YYYY-MM-DD h:m a', 'YYYY-MM-DD H:m:s', 'YYYY-MM-DD H:m'],
+	parseFormats: ['YYYY-MM-DD', "DD.MM.YYYY", 'YYYY-MM-DD h:m:s a', 'YYYY-MM-DD h:m a', 'YYYY-MM-DD H:m:s', 'YYYY-MM-DD H:m', "DD.MM.YYYY HH:mm"],
 
 	getInitialState () {
 		return {
@@ -125,7 +125,7 @@ module.exports = Field.create({
 								autoComplete="off"
 								name={this.getInputName(this.props.paths.time)}
 								onChange={this.timeChanged}
-								placeholder="HH:MM:SS am/pm"
+								placeholder="HH:mm"
 								value={this.state.timeValue}
 							/>
 						</Section>
