@@ -26,7 +26,7 @@ module.exports = Field.create({
 	tzOffsetInputFormat: 'Z',
 
 	// parse formats (duplicated from lib/fieldTypes/datetime.js)
-	parseFormats: ['YYYY-MM-DD', "DD.MM.YYYY", 'YYYY-MM-DD h:m:s a', 'YYYY-MM-DD h:m a', 'YYYY-MM-DD H:m:s', 'YYYY-MM-DD H:m', "DD.MM.YYYY HH:mm"],
+	parseFormats: ["DD.MM.YYYY", "DD.MM.YYYY HH:mm"],
 
 	getInitialState () {
 		return {
@@ -38,7 +38,7 @@ module.exports = Field.create({
 
 	getDefaultProps () {
 		return {
-			formatString: 'Do MMM YYYY, h:mm:ss a',
+			formatString: 'DD.MM.YYYY HH:mm"',
 		};
 	},
 
@@ -49,7 +49,7 @@ module.exports = Field.create({
 
 	// TODO: Move isValid() so we can share with server-side code
 	isValid (value) {
-		return this.moment(value, this.parseFormats).isValid();
+		return this.moment(value).isValid();
 	},
 
 	// TODO: Move format() so we can share with server-side code

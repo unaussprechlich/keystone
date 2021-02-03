@@ -14,8 +14,8 @@ function date (list, path, options) {
 	this._underscoreMethods = ['format', 'moment', 'parse'];
 	this._fixedSize = 'medium';
 	this._properties = ['formatString', 'yearRange', 'isUTC', 'inputFormat', 'todayButton'];
-	this.parseFormatString = options.inputFormat || 'YYYY-MM-DD';
-	this.formatString = (options.format === false) ? false : (options.format || 'Do MMM YYYY');
+	this.parseFormatString = options.inputFormat || 'DD.MM.YYYY';
+	this.formatString = (options.format === false) ? false : (options.format || 'DD.MM.YYYY');
 
 	this.yearRange = options.yearRange;
 	this.isUTC = options.utc || false;
